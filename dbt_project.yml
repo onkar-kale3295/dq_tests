@@ -1,7 +1,6 @@
 name: 'dq_tests'
 version: '1.0.0'
 config-version: 2
-require-dbt-version: ">=0.16.0"
 profile: 'default'
 
 source-paths: ["models"]
