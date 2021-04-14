@@ -10,7 +10,7 @@ select
 from (
     select {{ column_name }} 
     from {{ model }}
-    where {{ column_name }} NOT BETWEEN lower_limit AND upper_limit
+    where {{ column_name }} NOT BETWEEN {{ lower_limit }} AND {{ upper_limit }}
     )
 
 {% endmacro %}
