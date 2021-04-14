@@ -1,5 +1,7 @@
 {% macro test_accepted_values(model,column_name,values,dq_dimension = 'Validity',rule_description = 'To check if there data has any garbage values or unacceptable values',quality_threshold_upperbound = 80,quality_threshold_lowerbound = 40) %}
 
+{% set quote_values = kwargs.get('quote', True) %}
+
 with all_values as (
     select distinct
         {{ column_name }} as value_field
