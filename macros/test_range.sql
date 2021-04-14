@@ -1,4 +1,4 @@
-{% macro test_range(model,column_name,dq_dimension = 'Validity',rule_description = 'To check if the data values are within fixed range. The range can be defined by the user for a specific datatype',quality_threshold_upperbound = 80,quality_threshold_lowerbound = 40, upper_limit,lower_limit) %}
+{% macro test_range(model,column_name,upper_limit,lower_limit,dq_dimension = 'Validity',rule_description = 'To check if the data values are within fixed range. The range can be defined by the user for a specific datatype',quality_threshold_upperbound = 80,quality_threshold_lowerbound = 40) %}
 
 select 
     count(*) as validation_errors,

@@ -1,4 +1,4 @@
-{% macro test_accepted_values(model,column_name,dq_dimension = 'Validity',rule_description = 'To check if there data has any garbage values or unacceptable values',quality_threshold_upperbound = 80,quality_threshold_lowerbound = 40,values) %}
+{% macro test_accepted_values(model,column_name,values,dq_dimension = 'Validity',rule_description = 'To check if there data has any garbage values or unacceptable values',quality_threshold_upperbound = 80,quality_threshold_lowerbound = 40) %}
 
 with all_values as (
     select distinct
