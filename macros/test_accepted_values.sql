@@ -17,7 +17,7 @@ with validation_errors as (
             {%- if not loop.last -%},{%- endif %}
         {%- endfor %} 
     {% elif values is mapping %}
-        select values.from_column from values.table
+        select {{ values.from_column }} from {{ values.table }}
     {% endif %}
     )
 )
