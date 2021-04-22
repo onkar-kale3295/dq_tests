@@ -2,25 +2,23 @@
 
 {% set quote_values = kwargs.get('quote', True) %}
 
-{% if values %}
-   {% set txt = {% for value in values -%}
-                    {% if quote_values -%}
-                    '{{ value }}'
-                    {%- else -%}
-                    {{ value }}
-                    {%- endif -%}
-                    {%- if not loop.last -%},{%- endif %}
-                {%- endfor %} %} 
-{% elif sql %}
-   {% set txt = sql %}
-{% endif %}
-
 with validation_errors as (
     select
         {{ column_name }}
     from {{ model }}
     where {{ column_name }} not in (
-        {{ txt }}
+    {% if values %}
+        {% for value in values -%}
+            {% if quote_values -%}
+                '{{ value }}'
+            {%- else -%}
+                {{ value }}
+            {%- endif -%}
+            {%- if not loop.last -%},{%- endif %}
+        {%- endfor %} 
+    {% elif sql %}
+        {{ sql }}
+    {% endif %}
     )
 )
 
