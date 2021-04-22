@@ -23,11 +23,7 @@ with validation_errors as (
 )
 
 select
-    count(*) as validation_errors,
-    '{{ dq_dimension }}' as dq_dimension,
-    '{{ rule_description }}' as rule_description,
-    '{{ quality_threshold_lowerbound }}' as quality_threshold_lowerbound,
-    '{{ quality_threshold_upperbound }}' as quality_threshold_upperbound
+    count(*) as validation_errors
 from validation_errors
 
 {% endmacro %}
