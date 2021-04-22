@@ -7,7 +7,7 @@ with validation_errors as (
         {{ column_name }}
     from {{ model }}
     where {{ column_name }} not in (
-    {% if values %}
+    {% if values is not mapping %}
         {% for value in values -%}
             {% if quote_values -%}
                 '{{ value }}'
@@ -16,8 +16,8 @@ with validation_errors as (
             {%- endif -%}
             {%- if not loop.last -%},{%- endif %}
         {%- endfor %} 
-    {% elif sql %}
-        {{ sql }}
+    {% elif values is mapping %}
+        select values.from_column from values.table
     {% endif %}
     )
 )
