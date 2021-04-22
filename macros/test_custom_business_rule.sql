@@ -1,12 +1,8 @@
 {% macro test_custom_br(model,column_name,br_sql,dq_dimension = 'Validity',rule_description = 'To check validity of data against business rules',quality_threshold_upperbound = 80,quality_threshold_lowerbound = 40) %}
 
 select 
-    count(*) as validation_errors,
-    '{{ dq_dimension }}' as dq_dimension,
-    '{{ rule_description }}' as rule_description,
-    '{{ quality_threshold_lowerbound }}' as quality_threshold_lowerbound,
-    '{{ quality_threshold_upperbound }}' as quality_threshold_upperbound
-
+    count(*) as validation_errors
+    
 from (
     {{ br_sql }}
     )

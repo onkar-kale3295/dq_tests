@@ -4,7 +4,7 @@ select
     count(*) as validation_errors
 
 from (
-    select {{ column_name }} 
+    select *
     from {{ model }}
     where {{ column_name }} < 0
     )

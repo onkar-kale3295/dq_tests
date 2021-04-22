@@ -4,7 +4,7 @@
 
 with validation_errors as (
     select
-        {{ column_name }}
+        *
     from {{ model }}
     where {{ column_name }} not in (
     {% if values is not mapping %}
