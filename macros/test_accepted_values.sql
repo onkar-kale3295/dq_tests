@@ -3,16 +3,16 @@
 {% set quote_values = kwargs.get('quote', True) %}
 
 {% if values %}
-    set txt = {% for value in values -%}
+   {% set txt = {% for value in values -%}
                     {% if quote_values -%}
                     '{{ value }}'
                     {%- else -%}
                     {{ value }}
                     {%- endif -%}
                     {%- if not loop.last -%},{%- endif %}
-              {%- endfor %}
+                {%- endfor %} %} 
 {% elif sql %}
-    set txt = sql
+   {% set txt = sql %}
 {% endif %}
 
 with validation_errors as (
