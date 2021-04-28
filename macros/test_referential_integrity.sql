@@ -5,13 +5,13 @@
 select 
     count(*) as validation_errors
 from (
-    select *,{{ column_name }} as id from {{ model }}
+    select *,{{ column_name }} as col_id from {{ model }}
 ) as child
 left join (
-    select *,{{ field }} as id from {{ to }}
-) as parent on parent.id = child.id
-where child.id is not null
-  and parent.id is null
+    select *,{{ field }} as col_id from {{ to }}
+) as parent on parent.col_id = child.col_id
+where child.col_id is not null
+  and parent.col_id is null
 
 {% endmacro %}
 
