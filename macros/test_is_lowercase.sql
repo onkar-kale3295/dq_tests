@@ -3,7 +3,7 @@
 select 
     count(*) as validation_errors
 from (
-        select *,{{ column_name }} regexp '/^[a-z0-9]+$/g' as matches
+        select *,{{ column_name }} regexp '^[a-z0-9]+' as matches
             from  {{ model }} 
             where matches = 'FALSE'
     )
