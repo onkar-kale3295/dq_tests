@@ -3,9 +3,9 @@
 select 
     count(*) as validation_errors
 from (
-        select *,{{ column_name }} regexp '{{ expression }}' as matches
+        select *
             from  {{ model }} 
-            where matches = 'FALSE'
+            where {{ column_name }} rlike '^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$' =  'FALSE'
     )
 
 {% endmacro %}
